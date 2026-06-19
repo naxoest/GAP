@@ -268,7 +268,7 @@ class SaldoFragment : Fragment() {
             null
         }
 
-        if (linea != null && linea.linea.isNotBlank()) {
+        if (linea != null && !linea.linea.isNullOrBlank()) {
             try { cameraProvider?.unbindAll() } catch (_: Exception) {}
             try {
                 val dialog = AlertDialog.Builder(requireContext())

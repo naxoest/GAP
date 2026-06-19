@@ -41,7 +41,7 @@ class PagarViewModel : ViewModel() {
             val gson = Gson()
             val qrRuta = gson.fromJson(qrData, QRRuta::class.java)
 
-            if (qrRuta.linea.isBlank()) {
+            if (qrRuta.linea.isNullOrBlank()) {
                 _mensajeError.value = "Código QR inválido: falta número de línea"
                 _pagoExitoso.value = false
                 return

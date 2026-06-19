@@ -253,7 +253,7 @@ class PagarFragment : Fragment() {
             null
         }
 
-        if (qrRuta == null || qrRuta.linea.isBlank()) {
+        if (qrRuta == null || qrRuta.linea.isNullOrBlank()) {
             isProcessing = false
             startCamera()
             Toast.makeText(requireContext(), "Código QR inválido", Toast.LENGTH_SHORT).show()
