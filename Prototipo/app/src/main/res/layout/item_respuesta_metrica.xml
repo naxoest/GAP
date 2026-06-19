@@ -2,29 +2,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="8dp"
     android:layout_marginBottom="4dp"
     android:background="@drawable/camera_background">
 
-    <RatingBar
-        android:id="@+id/ratingBarRespuesta"
-        style="?android:attr/ratingBarStyleSmall"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numStars="5"
-        android:rating="4"
-        android:stepSize="1"
-        android:isIndicator="true" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <RatingBar
+            android:id="@+id/ratingBarRespuesta"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="4"
+            android:stepSize="1"
+            android:isIndicator="true" />
+
+        <TextView
+            android:id="@+id/tvTipoClienteLinea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvComentarioRespuesta"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="Comentario"
         android:textSize="12sp"
         android:textColor="@color/text_secondary"
-        android:layout_marginStart="8dp" />
+        android:layout_marginTop="2dp" />
 
 </LinearLayout>

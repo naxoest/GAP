@@ -5,5 +5,7 @@ data class FeedbackCes(
     val fecha: String,
     val hora: String,
     val puntuacion: Int,
-    val comentario: String = ""
+    val comentario: String = "",
+    val tipoCliente: String = "",
+    val linea: String = ""
 )

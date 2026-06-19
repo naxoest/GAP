@@ -332,7 +332,7 @@ class PagarFragment : Fragment() {
 
         btnVolver.setOnClickListener {
             dialog.dismiss()
-            mostrarEncuestaCes()
+            mostrarEncuestaCes(linea)
         }
 
         btnIrSaldo.setOnClickListener {
@@ -346,7 +346,7 @@ class PagarFragment : Fragment() {
         mostrarNotificacionPago(linea, nombreLinea, tarifa, saldoRestante)
     }
 
-    private fun mostrarEncuestaCes() {
+    private fun mostrarEncuestaCes(linea: String) {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_encuesta_ces, null)
 
         val ratingBar = dialogView.findViewById<android.widget.RatingBar>(R.id.ratingBarCes)
@@ -384,7 +384,9 @@ class PagarFragment : Fragment() {
                 fecha = java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(java.util.Date()),
                 hora = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault()).format(java.util.Date()),
                 puntuacion = puntuacion,
-                comentario = etComentario.text.toString()
+                comentario = etComentario.text.toString(),
+                tipoCliente = MockData.tipoClienteActual.displayName,
+                linea = linea
             )
             MockData.agregarFeedback(feedback)
 

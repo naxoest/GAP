@@ -112,6 +112,11 @@ class HistorialFragment : Fragment() {
         for (feedback in mostrarFeedbacks) {
             val respuestaView = LayoutInflater.from(requireContext()).inflate(R.layout.item_respuesta_metrica, layoutRespuestas, false)
             respuestaView.findViewById<RatingBar>(R.id.ratingBarRespuesta).rating = feedback.puntuacion.toFloat()
+            val tvTipoClienteLinea = respuestaView.findViewById<TextView>(R.id.tvTipoClienteLinea)
+            val infoParts = mutableListOf<String>()
+            if (feedback.tipoCliente.isNotEmpty()) infoParts.add(feedback.tipoCliente)
+            if (feedback.linea.isNotEmpty()) infoParts.add("Línea ${feedback.linea}")
+            tvTipoClienteLinea.text = infoParts.joinToString(" • ")
             val tvComentario = respuestaView.findViewById<TextView>(R.id.tvComentarioRespuesta)
             if (feedback.comentario.isNotEmpty()) {
                 tvComentario.text = feedback.comentario
