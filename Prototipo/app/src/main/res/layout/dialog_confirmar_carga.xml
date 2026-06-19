@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/dialog_background"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_wallet"
+        android:tint="@color/success"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/tvMontoCarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+$5.000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/success"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvSaldoActualCarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saldo actual: $10.000"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary" />
+
+    <TextView
+        android:id="@+id/tvSaldoFinalCarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saldo después: $15.000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelarCarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:layout_marginEnd="8dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmarCarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirmar"
+            android:backgroundTint="@color/success"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

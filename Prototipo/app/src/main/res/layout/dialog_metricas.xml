@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@drawable/dialog_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Métricas CES"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total de Encuestas"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvTotalEncuestas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:layout_gravity="center_horizontal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginVertical="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Promedio CES"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvPromedioCes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.3"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="@color/success"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvInterpretacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fácil de usar"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distribución de Puntuaciones"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutBarras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginVertical="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Últimas Respuestas"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutRespuestas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginVertical="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iteración Propuesta"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvIteracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Si CES promedio menor a 3: simplificar flujo de pago"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:padding="12dp"
+            android:background="@drawable/camera_background" />
+
+    </LinearLayout>
+
+</ScrollView>

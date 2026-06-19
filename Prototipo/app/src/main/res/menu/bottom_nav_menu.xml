@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_saldo"
+        android:icon="@drawable/ic_wallet"
+        android:title="@string/title_saldo" />
+
+    <item
+        android:id="@+id/navigation_pagar"
+        android:icon="@drawable/ic_qr_scan"
+        android:title="@string/title_pagar" />
+
+    <item
+        android:id="@+id/navigation_historial"
+        android:icon="@drawable/ic_directions_bus"
+        android:title="@string/title_historial" />
+
+</menu>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1565C0</color>
+    <color name="primary_dark">#0D47A1</color>
+    <color name="primary_light">#42A5F5</color>
+    <color name="secondary">#4CAF50</color>
+    <color name="secondary_dark">#388E3C</color>
+    <color name="accent">#FF9800</color>
+    <color name="background">#F5F5F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="error">#E53935</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_background">#212121</color>
+    <color name="on_surface">#212121</color>
+    <color name="text_primary">#212121</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="text_secondary">#757575</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="splash_background">#0D47A1</color>
+    <color name="saldo_card_background">#1565C0</color>
+    <color name="pago_success">#4CAF50</color>
+    <color name="adulto_color">#1565C0</color>
+    <color name="adulto_mayor_color">#7B1FA2</color>
+    <color name="estudiante_color">#F57F17</color>
+    <color name="success">#4CAF50</color>
+</resources>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">BlackPase</string>
+    <string name="title_saldo">Saldo</string>
+    <string name="title_pagar">Pagar</string>
+    <string name="title_historial">Historial</string>
+    <string name="saldo_disponible">Saldo Disponible</string>
+    <string name="tipo_pasajero">Tipo de Pasajero</string>
+    <string name="adulto">Adulto</string>
+    <string name="adulto_mayor">Adulto Mayor</string>
+    <string name="estudiante">Estudiante</string>
+    <string name="tarifa_label">Tarifa:</string>
+    <string name="ultimos_viajes">Últimos Viajes</string>
+    <string name="escanear_qr">Escanear QR</string>
+    <string name="apunta_al_qr">Apunta al código QR del bus para registrar tu viaje</string>
+    <string name="mis_viajes">Mis Viajes</string>
+    <string name="todos">Todos</string>
+    <string name="hoy">Hoy</string>
+    <string name="esta_semana">Esta Semana</string>
+    <string name="confirmar_pago">Confirmar Pago</string>
+    <string name="pago_exitoso">Pago Exitoso</string>
+    <string name="viaje_registrado">Viaje registrado correctamente</string>
+    <string name="saldo_insuficiente">Saldo Insuficiente</string>
+    <string name="no_tiene_saldo">No tiene suficiente saldo para este viaje</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="blackpase_splash">Transporte Público Inteligente</string>
+    <string name="notif_viaje_title">Viaje Registrado</string>
+    <string name="notif_viaje_channel">Pagos de Transporte</string>
+</resources>
