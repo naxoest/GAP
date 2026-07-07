@@ -1,22 +1,20 @@
 # Tablero Kanban
 
-## Product Backlog (5)
-- [ ] **HU3** – Jefe de línea historial contable.
+## Product Backlog (2)
 - [ ] **HU5** – Recarga en efectivo momentos críticos.
 - [ ] **HU6** – Dueño de negocio punto de carga.
-- [ ] **HU8** – Decidir si recargar.
-- [ ] **HU9** – Control de finanzas.
 
-## Sprint Backlog (3)
+## Sprint Backlog (2)
 - [ ] **HU2** – Chofer ahorra tiempo.
 - [ ] **HU4** – Tercera edad recarga presencial.
-- [ ] **HU7** – Verificar saldo antes de abordar.
 
 ## In Progress (1)
-- [ ] **HU1** – Pasajero paga con tarjeta.
+- [ ] **HU3** – Jefe de línea historial contable.
 
-## Testing/Review (0)
-*(No hay tareas en esta columna)*
+## Testing/Review (3)
+- [ ] **HU1** – Pasajero paga con tarjeta.
+- [ ] **HU7** – Verificar saldo antes de abordar.
+- [ ] **HU8** – Decidir si recargar.
 
 ## Done (0)
 *(No hay tareas en esta columna)*
