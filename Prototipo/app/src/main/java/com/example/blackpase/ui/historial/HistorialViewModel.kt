@@ -25,7 +25,7 @@ class HistorialViewModel : ViewModel() {
 
         when (filtro) {
             "Hoy" -> {
-                val hoy = "17/06/2026"
+                val hoy = java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(java.util.Date())
                 _transacciones.value = listaCompleta.filter { it.fecha == hoy }
             }
             "Esta Semana" -> {

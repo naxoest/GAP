@@ -77,6 +77,8 @@ class SaldoFragment : Fragment() {
         val spinnerTipoCliente = view.findViewById<Spinner>(R.id.spinnerTipoCliente)
         val rvUltimosViajes = view.findViewById<RecyclerView>(R.id.rvUltimosViajes)
         val btnCargarSaldo = view.findViewById<com.google.android.material.button.MaterialButton>(R.id.btnCargarSaldo)
+        val tvViajesPosibles = view.findViewById<TextView>(R.id.tvViajesPosibles)
+        val cardAlertaUmbral = view.findViewById<androidx.cardview.widget.CardView>(R.id.cardAlertaUmbral)
 
         cameraExecutor = Executors.newSingleThreadExecutor()
 
@@ -110,6 +112,14 @@ class SaldoFragment : Fragment() {
 
         saldoViewModel.ultimosViajes.observe(viewLifecycleOwner) { viajes ->
             historialAdapter.submitList(viajes)
+        }
+
+        saldoViewModel.viajesPosibles.observe(viewLifecycleOwner) { viajes ->
+            tvViajesPosibles.text = "Viajes posibles: $viajes"
+        }
+
+        saldoViewModel.bajoUmbral.observe(viewLifecycleOwner) { bajo ->
+            cardAlertaUmbral.visibility = if (bajo) View.VISIBLE else View.GONE
         }
 
         btnCargarSaldo.setOnClickListener {
