@@ -4,10 +4,19 @@ import com.example.blackpase.model.Transaccion
 import com.example.blackpase.model.TipoCliente
 import com.example.blackpase.model.TipoTransaccion
 import com.example.blackpase.model.FeedbackCes
+import com.example.blackpase.model.Comercio
+import com.example.blackpase.model.SesionChofer
 
 object MockData {
     var saldoActual: Int = 1000
     var tipoClienteActual: TipoCliente = TipoCliente.ADULTO
+
+    var sesionChoferActual: SesionChofer? = null
+
+    val comercios = listOf(
+        Comercio("1", "PepitoMarket", 0.05f),
+        Comercio("2", "FemucaStore", 0.03f)
+    )
 
     val lineasOsorno = listOf(
         "1A" to "Av. Diego de Almagro / 5to Centenario",
