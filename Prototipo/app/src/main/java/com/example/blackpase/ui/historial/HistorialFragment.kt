@@ -24,7 +24,7 @@ class HistorialFragment : Fragment() {
     private lateinit var historialViewModel: HistorialViewModel
     private lateinit var historialAdapter: HistorialAdapter
     private val lineasSeleccionadas = mutableSetOf<String>()
-    private val MAX_LINEAS = 5
+    private val MAX_LINEAS = 4
 
     override fun onCreateView(
         inflater: LayoutInflater,
