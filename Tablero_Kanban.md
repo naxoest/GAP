@@ -6,10 +6,11 @@
 
 ## Sprint Backlog (2)
 - [ ] **HU2** – Chofer ahorra tiempo.
-- [ ] **HU4** – Tercera edad recarga presencial.
+- [ ] **HU9** – Control de finanzas..
 
 ## In Progress (1)
 - [ ] **HU3** – Jefe de línea historial contable.
+- [ ] **HU4** – Tercera edad recarga presencial.
 
 ## Testing/Review (3)
 - [ ] **HU1** – Pasajero paga con tarjeta.
