@@ -5,6 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.blackpase.data.MockData
 import com.example.blackpase.model.Transaccion
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class HistorialViewModel : ViewModel() {
 
@@ -14,6 +18,9 @@ class HistorialViewModel : ViewModel() {
     private val _filtroActual = MutableLiveData<String>()
     val filtroActual: LiveData<String> = _filtroActual
 
+    private val _filtroLinea = MutableLiveData<List<String>>(emptyList())
+    val filtroLinea: LiveData<List<String>> = _filtroLinea
+
     init {
         _filtroActual.value = "Todos"
         cargarTransacciones("Todos")
@@ -21,19 +28,36 @@ class HistorialViewModel : ViewModel() {
 
     fun cargarTransacciones(filtro: String) {
         _filtroActual.value = filtro
-        val listaCompleta = MockData.transacciones
+        aplicarFiltros()
+    }
 
-        when (filtro) {
+    fun filtrarPorLinea(lineas: List<String>) {
+        _filtroLinea.value = lineas
+        aplicarFiltros()
+    }
+
+    private fun aplicarFiltros() {
+        var lista: List<Transaccion> = MockData.transacciones
+
+        when (_filtroActual.value) {
             "Hoy" -> {
-                val hoy = java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault()).format(java.util.Date())
-                _transacciones.value = listaCompleta.filter { it.fecha == hoy }
+                val hoy = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+                lista = lista.filter { it.fecha == hoy }
             }
             "Esta Semana" -> {
-                _transacciones.value = listaCompleta
-            }
-            else -> {
-                _transacciones.value = listaCompleta
+                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val calendar = Calendar.getInstance()
+                calendar.add(Calendar.DAY_OF_YEAR, -7)
+                val fechaLimite = sdf.format(calendar.time)
+                lista = lista.filter { it.fecha >= fechaLimite }
             }
         }
+
+        val lineasSeleccionadas = _filtroLinea.value
+        if (!lineasSeleccionadas.isNullOrEmpty()) {
+            lista = lista.filter { it.linea in lineasSeleccionadas }
+        }
+
+        _transacciones.value = lista
     }
 }

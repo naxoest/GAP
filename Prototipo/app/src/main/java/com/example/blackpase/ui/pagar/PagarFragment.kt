@@ -56,11 +56,7 @@ class PagarFragment : Fragment() {
 
     private val requestNotificationPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ) { isGranted ->
-        if (!isGranted) {
-            Toast.makeText(requireContext(), "Permiso de notificaciones denegado", Toast.LENGTH_SHORT).show()
-        }
-    }
+    ) { _ -> }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -421,17 +417,6 @@ class PagarFragment : Fragment() {
     }
 
     private fun mostrarNotificacionPago(linea: String, nombreLinea: String, tarifa: Int, saldoRestante: Int) {
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                requestNotificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            }
-            return
-        }
-
         val notificacion = NotificationCompat.Builder(requireContext(), "pagos_channel")
             .setSmallIcon(R.drawable.ic_directions_bus)
             .setContentTitle("Viaje Registrado")

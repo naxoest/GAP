@@ -60,6 +60,10 @@ class SaldoFragment : Fragment() {
         }
     }
 
+    private val requestNotificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { _ -> }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -373,17 +377,6 @@ class SaldoFragment : Fragment() {
     }
 
     private fun mostrarNotificacionCarga(monto: Int) {
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            }
-            return
-        }
-
         val notificacion = NotificationCompat.Builder(requireContext(), "cargas_channel")
             .setSmallIcon(R.drawable.ic_wallet)
             .setContentTitle("Saldo Cargado")

@@ -5,21 +5,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blackpase.R
 import com.example.blackpase.data.MockData
+import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
 class HistorialFragment : Fragment() {
 
     private lateinit var historialViewModel: HistorialViewModel
     private lateinit var historialAdapter: HistorialAdapter
+    private val lineasSeleccionadas = mutableSetOf<String>()
+    private val MAX_LINEAS = 5
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +41,10 @@ class HistorialFragment : Fragment() {
         val rvHistorial = view.findViewById<RecyclerView>(R.id.rvHistorial)
         val chipGroupFiltros = view.findViewById<ChipGroup>(R.id.chipGroupFiltros)
         val btnMetricas = view.findViewById<com.google.android.material.button.MaterialButton>(R.id.btnMetricas)
+        val btnSeleccionarLineas = view.findViewById<com.google.android.material.button.MaterialButton>(R.id.btnSeleccionarLineas)
+        val chipGroupLineasSeleccionadas = view.findViewById<ChipGroup>(R.id.chipGroupLineasSeleccionadas)
+        val layoutLineasSeleccionadas = view.findViewById<LinearLayout>(R.id.layoutLineasSeleccionadas)
+        val btnClearLineas = view.findViewById<ImageButton>(R.id.btnClearLineas)
 
         historialAdapter = HistorialAdapter()
         rvHistorial.layoutManager = LinearLayoutManager(requireContext())
@@ -50,6 +59,17 @@ class HistorialFragment : Fragment() {
             historialViewModel.cargarTransacciones(filtro)
         }
 
+        btnSeleccionarLineas.setOnClickListener {
+            mostrarDialogoSeleccionLineas()
+        }
+
+        btnClearLineas.setOnClickListener {
+            lineasSeleccionadas.clear()
+            chipGroupLineasSeleccionadas.removeAllViews()
+            layoutLineasSeleccionadas.visibility = View.GONE
+            historialViewModel.filtrarPorLinea(emptyList())
+        }
+
         historialViewModel.transacciones.observe(viewLifecycleOwner) { transacciones ->
             historialAdapter.submitList(transacciones)
         }
@@ -57,6 +77,85 @@ class HistorialFragment : Fragment() {
         btnMetricas.setOnClickListener {
             mostrarMetricas()
         }
+    }
+
+    private fun mostrarDialogoSeleccionLineas() {
+        val lineasDisponibles = MockData.lineasOsorno.map { it.first }
+        val tempSeleccionadas = lineasSeleccionadas.toMutableSet()
+
+        val adapter = object : android.widget.BaseAdapter() {
+            override fun getCount() = lineasDisponibles.size
+            override fun getItem(position: Int) = lineasDisponibles[position]
+            override fun getItemId(position: Int) = position.toLong()
+
+            override fun getView(position: Int, convertView: View?, parent: android.view.ViewGroup): View {
+                val view = convertView ?: LayoutInflater.from(requireContext())
+                    .inflate(android.R.layout.simple_list_item_multiple_choice, parent, false)
+                val checkedTextView = view as android.widget.CheckedTextView
+                checkedTextView.text = "Línea ${lineasDisponibles[position]}"
+                checkedTextView.isChecked = lineasDisponibles[position] in tempSeleccionadas
+                return view
+            }
+        }
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle("Seleccionar líneas (máx. $MAX_LINEAS)")
+            .setAdapter(adapter, null)
+            .setPositiveButton("Aceptar") { _, _ ->
+                lineasSeleccionadas.clear()
+                lineasSeleccionadas.addAll(tempSeleccionadas)
+                actualizarChipsLineas()
+            }
+            .setNegativeButton("Cancelar", null)
+            .create()
+
+        dialog.listView.setOnItemClickListener { _, view, position, _ ->
+            val linea = lineasDisponibles[position]
+            val checkedTextView = view as android.widget.CheckedTextView
+
+            if (linea in tempSeleccionadas) {
+                tempSeleccionadas.remove(linea)
+                checkedTextView.isChecked = false
+            } else {
+                if (tempSeleccionadas.size >= MAX_LINEAS) {
+                    Toast.makeText(requireContext(), "Máximo $MAX_LINEAS líneas", Toast.LENGTH_SHORT).show()
+                    return@setOnItemClickListener
+                }
+                tempSeleccionadas.add(linea)
+                checkedTextView.isChecked = true
+            }
+        }
+
+        dialog.show()
+    }
+
+    private fun actualizarChipsLineas() {
+        val chipGroup = view?.findViewById<ChipGroup>(R.id.chipGroupLineasSeleccionadas) ?: return
+        val layout = view?.findViewById<LinearLayout>(R.id.layoutLineasSeleccionadas) ?: return
+
+        chipGroup.removeAllViews()
+
+        if (lineasSeleccionadas.isEmpty()) {
+            layout.visibility = View.GONE
+            historialViewModel.filtrarPorLinea(emptyList())
+            return
+        }
+
+        layout.visibility = View.VISIBLE
+
+        for (linea in lineasSeleccionadas) {
+            val chip = Chip(requireContext()).apply {
+                text = linea
+                isCloseIconVisible = true
+                setOnCloseIconClickListener {
+                    lineasSeleccionadas.remove(linea)
+                    actualizarChipsLineas()
+                }
+            }
+            chipGroup.addView(chip)
+        }
+
+        historialViewModel.filtrarPorLinea(lineasSeleccionadas.toList())
     }
 
     private fun mostrarMetricas() {

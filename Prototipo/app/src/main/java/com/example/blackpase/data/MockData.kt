@@ -6,7 +6,7 @@ import com.example.blackpase.model.TipoTransaccion
 import com.example.blackpase.model.FeedbackCes
 
 object MockData {
-    var saldoActual: Int = 10000
+    var saldoActual: Int = 1000
     var tipoClienteActual: TipoCliente = TipoCliente.ADULTO
 
     val lineasOsorno = listOf(
@@ -29,7 +29,7 @@ object MockData {
     val transacciones: MutableList<Transaccion> = mutableListOf(
         Transaccion(
             id = "1",
-            fecha = "14/06/2026",
+            fecha = "07/07/2026",
             hora = "08:30",
             tipo = TipoTransaccion.PAGO,
             linea = "1A",
@@ -39,7 +39,7 @@ object MockData {
         ),
         Transaccion(
             id = "2",
-            fecha = "13/06/2026",
+            fecha = "06/07/2026",
             hora = "17:45",
             tipo = TipoTransaccion.PAGO,
             linea = "5",
@@ -49,7 +49,7 @@ object MockData {
         ),
         Transaccion(
             id = "3",
-            fecha = "12/06/2026",
+            fecha = "05/07/2026",
             hora = "12:15",
             tipo = TipoTransaccion.PAGO,
             linea = "7B",
