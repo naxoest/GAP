@@ -34,8 +34,8 @@ class PagosChoferAdapter : ListAdapter<Transaccion, PagosChoferAdapter.PagoViewH
             tvHoraPago.text = transaccion.hora
             tvLineaPago.text = "Línea ${transaccion.linea} - ${MockData.getNombreLinea(transaccion.linea)}"
             tvTipoClientePago.text = transaccion.tipoCliente.displayName
-            tvMontoPago.text = "-$${transaccion.tarifa}"
-            tvSaldoRestante.text = "Saldo: $${String.format("%,d", transaccion.saldoRestante).replace(",", ".")}"
+            tvMontoPago.text = "+$${transaccion.tarifa}"
+            tvSaldoRestante.visibility = View.GONE
         }
     }
 

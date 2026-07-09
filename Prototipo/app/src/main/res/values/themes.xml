@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.BlackPase" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.BlackPase" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorOnPrimary">@color/on_primary</item>
@@ -10,7 +10,7 @@
         <item name="android:windowBackground">@color/background</item>
     </style>
 
-    <style name="Theme.BlackPase.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.BlackPase.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorOnPrimary">@color/on_primary</item>
@@ -18,7 +18,7 @@
         <item name="android:windowBackground">@color/splash_background</item>
     </style>
 
-    <style name="ConfirmDialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+    <style name="ConfirmDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorAccent">@color/primary</item>
         <item name="android:background">@color/surface</item>
