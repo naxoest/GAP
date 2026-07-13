@@ -106,17 +106,6 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSoyConductor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Soy Conductor"
-            android:textAllCaps="false"
-            android:layout_marginTop="16dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:drawableStart="@android:drawable/ic_lock_idle_lock"
-            android:drawablePadding="8dp" />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

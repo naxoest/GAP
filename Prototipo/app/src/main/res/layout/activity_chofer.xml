@@ -16,8 +16,8 @@
         app:navigationIcon="@drawable/ic_close_white"
         app:navigationIconTint="@color/white" />
 
-    <FrameLayout
-        android:id="@+id/fragmentContainerChofer"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerChofer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

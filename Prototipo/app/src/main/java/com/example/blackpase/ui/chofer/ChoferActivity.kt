@@ -1,12 +1,11 @@
 package com.example.blackpase.ui.chofer
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.example.blackpase.R
 import com.example.blackpase.data.MockData
 import com.example.blackpase.model.SesionChofer
+import com.example.blackpase.ui.adapter.ChoferPagerAdapter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.SimpleDateFormat
@@ -16,6 +15,7 @@ import java.util.Locale
 class ChoferActivity : AppCompatActivity() {
 
     private lateinit var bottomNav: BottomNavigationView
+    private var isNavigatingFromNav = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,28 +38,35 @@ class ChoferActivity : AppCompatActivity() {
             )
         }
 
+        val viewPager = findViewById<androidx.viewpager2.widget.ViewPager2>(R.id.viewPagerChofer)
+        viewPager.adapter = ChoferPagerAdapter(this)
+
         bottomNav.setOnItemSelectedListener { item ->
+            isNavigatingFromNav = true
             when (item.itemId) {
                 R.id.navigation_dashboard_chofer -> {
-                    loadFragment(DashboardChoferFragment())
+                    viewPager.currentItem = 0
                     true
                 }
                 R.id.navigation_pagos_chofer -> {
-                    loadFragment(PagosChoferFragment())
+                    viewPager.currentItem = 1
                     true
                 }
                 else -> false
+            }.also { isNavigatingFromNav = false }
+        }
+
+        viewPager.registerOnPageChangeCallback(object : androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (isNavigatingFromNav) return
+                val menuId = when (position) {
+                    0 -> R.id.navigation_dashboard_chofer
+                    1 -> R.id.navigation_pagos_chofer
+                    else -> R.id.navigation_dashboard_chofer
+                }
+                bottomNav.selectedItemId = menuId
             }
-        }
-
-        if (savedInstanceState == null) {
-            bottomNav.selectedItemId = R.id.navigation_dashboard_chofer
-        }
-    }
-
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerChofer, fragment)
-            .commit()
+        })
     }
 }

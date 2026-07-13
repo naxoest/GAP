@@ -307,8 +307,10 @@ class PagarFragment : Fragment() {
             btnIrSaldo.setOnClickListener {
                 dialog.dismiss()
                 isProcessing = false
-                val navController = androidx.navigation.Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main)
-                navController.navigate(R.id.navigation_saldo)
+                val viewPager = requireActivity().findViewById<androidx.viewpager2.widget.ViewPager2>(R.id.viewPagerClient)
+                val bottomNav = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.nav_view)
+                viewPager.currentItem = 0
+                bottomNav.selectedItemId = R.id.navigation_saldo
             }
         }
 
@@ -342,8 +344,10 @@ class PagarFragment : Fragment() {
         btnIrSaldo.setOnClickListener {
             dialog.dismiss()
             isProcessing = false
-            val navController = androidx.navigation.Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main)
-            navController.navigate(R.id.navigation_saldo)
+            val viewPager = requireActivity().findViewById<androidx.viewpager2.widget.ViewPager2>(R.id.viewPagerClient)
+            val bottomNav = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.nav_view)
+            viewPager.currentItem = 0
+            bottomNav.selectedItemId = R.id.navigation_saldo
         }
 
         dialog.show()

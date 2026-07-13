@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blackpase.R
 import com.example.blackpase.data.MockData
-import com.example.blackpase.ui.chofer.PinChoferActivity
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
@@ -47,7 +46,6 @@ class HistorialFragment : Fragment() {
         val chipGroupLineasSeleccionadas = view.findViewById<ChipGroup>(R.id.chipGroupLineasSeleccionadas)
         val layoutLineasSeleccionadas = view.findViewById<LinearLayout>(R.id.layoutLineasSeleccionadas)
         val btnClearLineas = view.findViewById<ImageButton>(R.id.btnClearLineas)
-        val btnSoyConductor = view.findViewById<com.google.android.material.button.MaterialButton>(R.id.btnSoyConductor)
 
         historialAdapter = HistorialAdapter()
         rvHistorial.layoutManager = LinearLayoutManager(requireContext())
@@ -79,10 +77,6 @@ class HistorialFragment : Fragment() {
 
         btnMetricas.setOnClickListener {
             mostrarMetricas()
-        }
-
-        btnSoyConductor.setOnClickListener {
-            startActivity(Intent(requireContext(), PinChoferActivity::class.java))
         }
     }
 

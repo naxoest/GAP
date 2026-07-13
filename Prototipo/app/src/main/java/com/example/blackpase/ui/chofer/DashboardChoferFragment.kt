@@ -1,6 +1,5 @@
 package com.example.blackpase.ui.chofer
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,7 +35,6 @@ class DashboardChoferFragment : Fragment() {
         val tvDuracionRecorrido = view.findViewById<TextView>(R.id.tvDuracionRecorrido)
         val tvLineaChofer = view.findViewById<TextView>(R.id.tvLineaChofer)
         val tvResumenViaje = view.findViewById<TextView>(R.id.tvResumenViaje)
-        val btnFinalizarRecorrido = view.findViewById<com.google.android.material.button.MaterialButton>(R.id.btnFinalizarRecorrido)
         val spinnerLineaChofer = view.findViewById<Spinner>(R.id.spinnerLineaChofer)
 
         val sesion = MockData.sesionChoferActual
@@ -86,48 +84,10 @@ class DashboardChoferFragment : Fragment() {
                     "Pagos registrados: $count\n" +
                     "Total: $${String.format("%,d", total).replace(",", ".")}"
         }
-
-        btnFinalizarRecorrido.setOnClickListener {
-            AlertDialog.Builder(requireContext())
-                .setTitle("Finalizar Recorrido")
-                .setMessage("¿Estás seguro de finalizar el recorrido actual?")
-                .setPositiveButton("Sí, finalizar") { _, _ ->
-                    mostrarResumenFinal()
-                }
-                .setNegativeButton("Cancelar", null)
-                .show()
-        }
     }
 
     override fun onResume() {
         super.onResume()
         choferViewModel.cargarDatos()
-    }
-
-    private fun mostrarResumenFinal() {
-        val pagos = MockData.transacciones.filter {
-            it.tipo == com.example.blackpase.model.TipoTransaccion.PAGO &&
-                    it.fecha == MockData.sesionChoferActual?.fechaInicio
-        }
-        val total = pagos.sumOf { it.tarifa }
-        val sesion = MockData.sesionChoferActual
-
-        AlertDialog.Builder(requireContext())
-            .setTitle("Resumen del Viaje")
-            .setMessage(
-                "Línea: ${sesion?.linea}\n" +
-                "Hora inicio: ${sesion?.horaInicio}\n" +
-                "Total recaudado: $${String.format("%,d", total).replace(",", ".")}\n" +
-                "Pasajeros: ${pagos.size}\n\n" +
-                "Simulación:\n" +
-                "• Con tarjeta: ${pagos.size} pasajeros\n" +
-                "• Efectivo: 0 pasajeros"
-            )
-            .setPositiveButton("Cerrar") { _, _ ->
-                MockData.sesionChoferActual = null
-                activity?.finish()
-            }
-            .setCancelable(false)
-            .show()
     }
 }

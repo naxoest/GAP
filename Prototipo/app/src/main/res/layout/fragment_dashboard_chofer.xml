@@ -267,15 +267,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFinalizarRecorrido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Finalizar Recorrido"
-            android:textAllCaps="false"
-            android:layout_marginTop="8dp"
-            style="@style/Widget.MaterialComponents.Button" />
-
     </LinearLayout>
 
 </ScrollView>

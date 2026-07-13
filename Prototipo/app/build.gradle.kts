@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.viewpager2)
     implementation(libs.zxing.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
